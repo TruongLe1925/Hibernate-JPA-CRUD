@@ -1,4 +1,4 @@
-package entity;
+package com.luv2code.cruddemo.entity;
 
 import jakarta.persistence.*;
 
@@ -62,5 +62,6 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+        
     }
 }

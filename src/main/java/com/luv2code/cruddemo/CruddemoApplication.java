@@ -1,9 +1,10 @@
 package com.luv2code.cruddemo;
 
+import com.luv2code.cruddemo.dao.StudentDAO;
+import com.luv2code.cruddemo.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
@@ -13,9 +14,13 @@ public class CruddemoApplication {
 		SpringApplication.run(CruddemoApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext args) {
+	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			System.out.println("Hello World");
+			creatStudent(studentDAO);
 		};
+	}
+	private void creatStudent(StudentDAO studentDAO) {
+		Student firstStudent = new Student("Truong","Le","lephuoctruong@gmail.com");
+		studentDAO.save(firstStudent);
 	}
 }
