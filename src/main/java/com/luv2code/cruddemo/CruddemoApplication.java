@@ -17,8 +17,20 @@ public class CruddemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
 			creatStudent(studentDAO);
+			findID(studentDAO);
 		};
 	}
+
+	private void findID(StudentDAO studentDAO) {
+		System.out.println("Create new Student");
+		Student newStudent = new Student("em","Ceo","Peomteo@gmail.com");
+		studentDAO.save(newStudent);
+		int findID = newStudent.getId();
+		System.out.println("id is " + findID);
+		Student studentByiD = studentDAO.findStudentByID(findID);
+		System.out.println(studentByiD);
+	}
+
 	private void creatStudent(StudentDAO studentDAO) {
 		Student firstStudent = new Student("Truong","Le","lephuoctruong@gmail.com");
 		studentDAO.save(firstStudent);
